@@ -1,0 +1,46 @@
+<template>
+    <lightning-card title="Contact Search Component">
+        <div class="slds-m-around_medium">
+            <div onchange={handleKeyChange}>
+                <lightning-input
+                    name="search"
+                    label="Search for contacts"
+                    type="search">
+                </lightning-input>
+            </div>
+            <br />
+            <template if:true={contact}>
+                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-m-top_small">
+                    <thead>
+                        <tr class="slds-line-height_reset">
+                            <th>
+                                <div class="slds-truncate">Employee Name</div>
+                            </th>
+                            <th>
+                                <div class="slds-truncate">Title</div>
+                            </th>
+                            <th>
+                                <div class="slds-truncate">Email</div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody> 
+                        <template for:each={contact} for:item="c">
+                            <tr class="slds-hint-parent" key={c.value.Id}>
+                                <td>
+                                    <div class="slds-truncate">{c.value.Name}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{c.value.Title}</div>
+                                </td>
+                                <td>
+                                    <div class="slds-truncate">{c.value.Email}</div>
+                                </td>
+                            </tr>
+                        </template>    
+                    </tbody>
+                </table>
+            </template>        
+        </div>
+    </lightning-card>
+</template>
